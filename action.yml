@@ -37,7 +37,7 @@ runs:
       if: ${{ runner.os == 'Linux' }}
       shell: bash
       run: |
-        chmod +x ./tool-linux
+        chmod +x ./linux-x64
         ./linux-x64/ZapTests --RunType ${{ inputs['runType'] }} --BaselineEnv ${{ inputs['baselineEnv'] }} --UnderTestEnv ${{ inputs['undertestEnv'] }} --TestEnv ${{ inputs['testEnv'] }} --RunSettingsPath ${{ inputs['runSettingsLocation'] }} --TestSuitsPath ${{ inputs['testsuitsLocation'] }} --OutputPath ${{ inputs['outputLocation'] }}
 
 branding:
