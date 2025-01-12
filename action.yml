@@ -35,7 +35,7 @@ runs:
       
     - name: Run ZapTests tool (Linux)
       if: ${{ runner.os == 'Linux' }}
-      shell: pwsh
+      shell: bash
       run: |
         chmod +x ./tool-linux
         ./linux-x64/ZapTests --RunType ${{ inputs['runType'] }} --BaselineEnv ${{ inputs['baselineEnv'] }} --UnderTestEnv ${{ inputs['undertestEnv'] }} --TestEnv ${{ inputs['testEnv'] }} --RunSettingsPath ${{ inputs['runSettingsLocation'] }} --TestSuitsPath ${{ inputs['testsuitsLocation'] }} --OutputPath ${{ inputs['outputLocation'] }}
