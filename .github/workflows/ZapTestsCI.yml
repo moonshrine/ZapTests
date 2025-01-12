@@ -29,6 +29,10 @@ jobs:
       - name: Run ZapTests action
         uses: moonshrine/ZapTests@5ebdd6e91b6c29c376aaa128f18b367cba7c3985
         with:
-          runtType: 'ComparisonTest'
+          runType: 'ComparisonTest'
           baselineEnv: 'PROD'
           undertestEnv: 'PROD'
+          testEnv: 'PROD'
+          runSettingsLocation: ''
+          testsuitsLocation: ''
+          outputLocation: ''
