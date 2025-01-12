@@ -27,11 +27,19 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Run ZapTests tool
-      shell: bash
+    - name: Run ZapTests tool (Windows)
+      if: ${{ runner.os == 'Windows' }}
+      shell: pwsh
       run: |
-        chmod +x ./ZapTests.exe
-        ./ZapTests.exe --RunType ${{ inputs['runType'] }} --BaselineEnv ${{ inputs['baselineEnv'] }} --UnderTestEnv ${{ inputs['undertestEnv'] }} --TestEnv ${{ inputs['testEnv'] }} --RunSettingsPath ${{ inputs['runSettingsLocation'] }} --TestSuitsPath ${{ inputs['testsuitsLocation'] }} --OutputPath ${{ inputs['outputLocation'] }}
+        .\win-x64\ZapTests.exe --RunType ${{ inputs['runType'] }} --BaselineEnv ${{ inputs['baselineEnv'] }} --UnderTestEnv ${{ inputs['undertestEnv'] }} --TestEnv ${{ inputs['testEnv'] }} --RunSettingsPath ${{ inputs['runSettingsLocation'] }} --TestSuitsPath ${{ inputs['testsuitsLocation'] }} --OutputPath ${{ inputs['outputLocation'] }}
+      
+    - name: Run ZapTests tool (Linux)
+      if: ${{ runner.os == 'Linux' }}
+      shell: pwsh
+      run: |
+        chmod +x ./tool-linux
+        ./linux-x64/ZapTests --RunType ${{ inputs['runType'] }} --BaselineEnv ${{ inputs['baselineEnv'] }} --UnderTestEnv ${{ inputs['undertestEnv'] }} --TestEnv ${{ inputs['testEnv'] }} --RunSettingsPath ${{ inputs['runSettingsLocation'] }} --TestSuitsPath ${{ inputs['testsuitsLocation'] }} --OutputPath ${{ inputs['outputLocation'] }}
+
 branding:
   icon: 'check-circle'
   color: 'blue'
