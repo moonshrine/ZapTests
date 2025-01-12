@@ -27,7 +27,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run ZapTests action
-        uses: moonshrine/ZapTests@a2abf592e35493956b13c80ee4db4459b17953a9
+        uses: moonshrine/ZapTests@v1
         with:
           runType: 'ComparisonTest'
           baselineEnv: 'PROD'
